@@ -8,7 +8,7 @@ if exists("g:did_load_filetypes")
   filetype plugin indent off
 endif
 set runtimepath+=~/.vim/bundle/vundle/
-set runtimepath+=$GOROOT/misc/vim
+"set runtimepath+=$GOROOT/misc/vim
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
@@ -39,15 +39,13 @@ Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle "pangloss/vim-javascript"
-"Bundle "fatih/vim-go"
+Bundle "fatih/vim-go"
 Bundle "nsf/gocode"
 Bundle "davidhalter/jedi-vim"
 Bundle "nerdtree"
-
 set omnifunc=syntaxcomplete#Complete
 
 filetype plugin indent on
-
 let g:go_fmt_command = "goimports"
 
 " 16 color terminal
