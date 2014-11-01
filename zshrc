@@ -72,14 +72,15 @@ export GOROOT=/usr/local/go
 export GOPATH=/Users/bdowns/gocode
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
+# General
 alias lt='ls -ltra'
 alias ll='ls -l'
-alias lt='ls -ltr'
 alias c='clear'
 alias grep='grep --color'
 
 ## GIT Aliases
-alias GP='git pull'
+alias gp='git pull'
+alias gs='git status'
 
 ## Find files
 function ff() { find . -type f -iname '*'$*'*' -ls ; }
