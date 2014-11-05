@@ -1,6 +1,6 @@
 all:
 	[ -f ~/.vimrc ] || ln -s $(PWD)/vimrc ~/.vimrc
-	[ -f ~/.zshrc ] || ln -s $(PWD)/vimrc ~/.zshrc
+	[ -f ~/.zshrc ] || ln -s $(PWD)/zshrc ~/.zshrc
 
 clean:
 	[ -f ~/.vimrc ] || rm ~/.vimrc
