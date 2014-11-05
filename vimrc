@@ -48,12 +48,19 @@ set omnifunc=syntaxcomplete#Complete
 filetype plugin indent on
 let g:go_fmt_command = "goimports"
 
+"let g:solarized_termcolors=256
+"set background=dark
+"colorscheme solarized
+
 " 16 color terminal
 set t_Co=256
 
 " Set the term title
 set title
 set titlestring=%F
+
+" Set encoding
+set encoding=utf-8
 
 " Show line number and position
 set number
@@ -73,11 +80,65 @@ set laststatus=2
 " Fix backspace
 set backspace=2
 
+set lazyredraw
+
+" speed up syntax highlighting
+set nocursorcolumn
+set nocursorline
+syntax sync minlines=256
+set synmaxcol=128
+
+" Go settings
+au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+
+" ==================== Vim-go ====================
+let g:go_fmt_fail_silently = 1
+let g:go_fmt_command = "gofmt"
+
+
+au FileType go nmap gd <Plug>(go-def)
+au FileType go nmap <Leader>s <Plug>(go-def-split)
+au FileType go nmap <Leader>v <Plug>(go-def-vertical)
+au FileType go nmap <Leader>t <Plug>(go-def-tab)
+
+au FileType go nmap <Leader>i <Plug>(go-info)
+
+au FileType go nmap  <leader>r  <Plug>(go-run)
+au FileType go nmap  <leader>b  <Plug>(go-build)
+
+au FileType go nmap <Leader>d <Plug>(go-doc)
+
+" scala settings
+autocmd BufNewFile,BufReadPost *.scala setl shiftwidth=2 expandtab
+
+" md settings
+au BufNewFile,BufRead *.md setlocal noet ts=4 sw=4
+
+" Prettify json
+com! JSONFormat %!python -m json.tool
+
+" Wildmenu completion {{{
+set wildmenu
+" set wildmode=list:longest
+set wildmode=list:full
+
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store                       " OSX bullshit
+set wildignore+=*.luac                           " Lua byte code
+set wildignore+=migrations                       " Django migrations
+set wildignore+=go/pkg                           " Go static files
+set wildignore+=go/bin                           " Go bin files
+set wildignore+=go/bin-vagrant                   " Go bin-vagrant files
+set wildignore+=*.pyc,*.pyo                      " Python byte code
+set wildignore+=*.orig                           " Merge resolution files
+
 " Make Ctrl-T go to the next vim-tab
 nmap <C-T> <ESC>:tabn<CR>
-
-" Fix expansion mode
-set wildmode=list:longest
 
 " Incremental search
 set incsearch
@@ -101,7 +162,7 @@ set softtabstop=4
 set shiftwidth=4
 
 " More history
-set history=100
+set history=1000
 
 " Store our undo file
 set undodir=~/.vim/undo
@@ -121,10 +182,7 @@ set writebackup
 noremap <C-e> 3<C-e>
 noremap <C-y> 3<C-y>
 
-" Wildcard ignore some files
-set wildignore+=*.o,*.pyc,*.beam,*.class,*~
-
-" Make our shell interactive
+" Make our shell interactive.  Saving for now...
 "set shellcmdflag=-ic
 
 " Allow switching away from changed buffers
