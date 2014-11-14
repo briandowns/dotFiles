@@ -53,7 +53,7 @@ ENABLE_CORRECTION="true"
 plugins=(git go)
 
 source $ZSH/oh-my-zsh.sh
-export PATH=":/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/Users/bdowns/gocode/bin:/usr/local/go/bin"
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/Users/bdowns/gocode/bin:/usr/local/go/bin
 
 # export MANPATH="/usr/local/man:$MANPATH"
 # You may need to manually set your language environment
@@ -70,7 +70,7 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 export GOROOT=/usr/local/go
 export GOPATH=/Users/bdowns/gocode
-export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:/usr/local/go_appengine
 
 # General
 alias lt='ls -ltra'

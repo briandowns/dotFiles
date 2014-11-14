@@ -43,6 +43,7 @@ Bundle "fatih/vim-go"
 Bundle "nsf/gocode"
 Bundle "davidhalter/jedi-vim"
 Bundle "nerdtree"
+Bundle 'wting/rust.vim'
 set omnifunc=syntaxcomplete#Complete
 
 filetype plugin indent on
