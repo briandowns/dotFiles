@@ -82,6 +82,8 @@ alias grep='grep --color'
 alias gp='git pull'
 alias gs='git status'
 
+alias vag='vagrant'
+
 ## Find files
 function ff() { find . -type f -iname '*'$*'*' -ls ; }
 
