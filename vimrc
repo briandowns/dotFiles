@@ -8,8 +8,8 @@ if exists("g:did_load_filetypes")
   filetype plugin indent off
 endif
 set runtimepath+=~/.vim/bundle/vundle/
-set runtimepath+=$GOROOT/misc/vim
-set runtimepath+=$GOPATH/src/github.com/golang/lint/misc/vim
+set runtimepath+=$GOROOT/misc/vim " Golang highting and completion
+set runtimepath+=$GOPATH/src/github.com/golang/lint/misc/vim " Golang linting
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
