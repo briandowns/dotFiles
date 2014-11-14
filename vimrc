@@ -9,6 +9,7 @@ if exists("g:did_load_filetypes")
 endif
 set runtimepath+=~/.vim/bundle/vundle/
 set runtimepath+=$GOROOT/misc/vim
+set runtimepath+=$GOPATH/src/github.com/golang/lint/misc/vim
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
