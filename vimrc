@@ -45,6 +45,11 @@ Bundle "nsf/gocode"
 Bundle "davidhalter/jedi-vim"
 Bundle "nerdtree"
 Bundle 'wting/rust.vim'
+
+" enable spelling set spell spelllang=en_us
+" warning: variables will spell wrong
+highlight SpellBad cterm=underline ctermfg=blue
+
 set omnifunc=syntaxcomplete#Complete
 
 filetype plugin indent on
