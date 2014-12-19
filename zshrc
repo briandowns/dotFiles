@@ -112,3 +112,6 @@ function preexec {
 ## Process functions
 function pid() { ps aux | grep -i ${1} | grep -v grep }
 function ppid() { ps -p ${1:-$$} -o ppid=; }
+
+## Go functions
+function ggg() { go get github.com/$1 }
