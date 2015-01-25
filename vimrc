@@ -361,3 +361,13 @@ let g:gitgutter_highlights = 0
 let g:gitgutter_all_on_focusgained = 0
 nnoremap <silent> <leader>j :GitGutterNextHunk<cr>
 nnoremap <silent> <leader>k :GitGutterPrevHunk<cr>
+
+" Ocaml settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
