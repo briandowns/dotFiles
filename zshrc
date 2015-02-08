@@ -52,7 +52,7 @@ ENABLE_CORRECTION="true"
 plugins=(git go)
 
 source $ZSH/oh-my-zsh.sh
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/Users/bdowns/gocode/bin:/usr/local/go/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/Users/bdowns/gocode/bin:/usr/local/go/bin:/opt/local/lib/postgresql93/bin
 
 # export MANPATH="/usr/local/man:$MANPATH"
 # You may need to manually set your language environment
