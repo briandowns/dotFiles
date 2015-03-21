@@ -45,6 +45,7 @@ Bundle "davidhalter/jedi-vim"
 Bundle "nerdtree"
 Bundle 'wting/rust.vim'
 Bundle 'vim-jp/vim-go-extra'
+Bundle 'flazz/vim-colorschemes'
 
 " enable spelling set spell spelllang=en_us
 " warning: variables will spell wrong
@@ -58,6 +59,7 @@ let g:go_fmt_command = "goimports"
 "let g:solarized_termcolors=256
 "set background=dark
 "colorscheme solarized
+colorscheme molokai
 
 " 16 color terminal
 set t_Co=256
