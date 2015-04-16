@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/bdowns/gocode/src/github.com/briandowns/reverse'
+let g:netrw_dirhist_2='/Users/bdowns/gocode/src/github.com/briandowns/openweathermap/examples'
+let g:netrw_dirhist_3='/Users/bdowns/gocode/src/github.com/briandowns/talks/AWSandGo/src'
+let g:netrw_dirhist_4='/Users/bdowns/gocode/src/github.com/briandowns/logcolor/renderers'
+let g:netrw_dirhist_5='/Users/bdowns/.vim/colors'
+let g:netrw_dirhist_6='/Users/bdowns/repos/dotFiles'
