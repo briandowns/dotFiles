@@ -115,3 +115,9 @@ function ppid() { ps -p ${1:-$$} -o ppid=; }
 
 ## Go functions
 function ggg() { go get github.com/$1 }
+
+# Date functions
+function day_ago() { echo $(expr $(date +%s) - 86400) }
+function week_ago() { echo $(expr $(date +%s) - 604800) }
+function month_ago() { echo $(expr $(date +%s) - 2592000) }
+function year_ago() { echo $(expr $(date +%s) - 31557600) }
