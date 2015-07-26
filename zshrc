@@ -121,3 +121,10 @@ function day_ago() { echo $(expr $(date +%s) - 86400) }
 function week_ago() { echo $(expr $(date +%s) - 604800) }
 function month_ago() { echo $(expr $(date +%s) - 2592000) }
 function year_ago() { echo $(expr $(date +%s) - 31557600) }
+
+PERL_MB_OPT="--install_base \"/Users/bdowns/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/bdowns/perl5"; export PERL_MM_OPT;
+
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=/Users/bdowns/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
