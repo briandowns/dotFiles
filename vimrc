@@ -13,43 +13,37 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/syntastic'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'armon/vimerl'
-Bundle 'mileszs/ack.vim'
+"Bundle 'Lokaltog/vim-powerline'
+"Bundle 'armon/vimerl'
+"Bundle 'mileszs/ack.vim'
 Bundle 'matchit.zip'
 Bundle 'taglist.vim'
 Bundle 'localvimrc'
-Bundle 'python.vim'
+"Bundle 'python.vim'
 Bundle 'kien/ctrlp.vim'
-Bundle 'sjl/gundo.vim'
-Bundle 'Rip-Rip/clang_complete'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'michaeljsmith/vim-indent-object'
+"Bundle 'sjl/gundo.vim'
+"Bundle 'Rip-Rip/clang_complete'
+"Bundle 'nathanaelkane/vim-indent-guides'
+"Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'LargeFile'
-Bundle 'scrooloose/nerdcommenter'
-Bundle "godlygeek/tabular"
-Bundle 'tpope/vim-eunuch'
+"Bundle 'scrooloose/nerdcommenter'
+Bundle 'godlygeek/tabular'
+"Bundle 'tpope/vim-eunuch'
 Bundle 'jsbeautify'
 Bundle 'amadeus/powerline-improved'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tpope/vim-abolish'
-Bundle "tpope/vim-markdown"
-Bundle "jtratner/vim-flavored-markdown"
-Bundle 'mattn/webapi-vim'
-Bundle 'mattn/gist-vim'
+Bundle 'tpope/vim-markdown'
+Bundle 'jtratner/vim-flavored-markdown'
+"Bundle 'mattn/webapi-vim'
 Bundle 'airblade/vim-gitgutter'
-Bundle "pangloss/vim-javascript"
-Bundle "fatih/vim-go"
-Bundle "nsf/gocode"
-Bundle "davidhalter/jedi-vim"
-Bundle "nerdtree"
-Bundle 'wting/rust.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'fatih/vim-go'
+Bundle 'nsf/gocode'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'nerdtree'
 Bundle 'vim-jp/vim-go-extra'
 Bundle 'flazz/vim-colorschemes'
-
-" enable spelling set spell spelllang=en_us
-" warning: variables will spell wrong
-highlight SpellBad cterm=underline ctermfg=blue
 
 set omnifunc=syntaxcomplete#Complete
 
@@ -354,10 +348,6 @@ vnoremap <silent> # :<C-U>
   \gvy?<C-R><C-R>=substitute(
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
-
-" Gist settings
-let g:gist_clip_command = 'pbcopy'
-let g:gist_open_browser_after_post = 1
 
 " Gitgutter
 let g:gitgutter_highlights = 0
