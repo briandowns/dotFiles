@@ -53,8 +53,8 @@ let g:go_fmt_command = "goimports"
 "let g:solarized_termcolors=256
 "set background=dark
 "colorscheme solarized
-" colorscheme molokai
-colorscheme grb256
+colorscheme molokai
+"colorscheme grb256
 
 " 16 color terminal
 set t_Co=256
