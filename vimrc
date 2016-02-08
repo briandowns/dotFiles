@@ -20,6 +20,7 @@ Plugin 'vim-jp/vim-go-extra'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -218,7 +219,3 @@ function! g:NerdTreeFindToggle()
     exec 'NERDTree'
   endif
 endfunction
-
-au VimEnter *  NERDTree
-" For toggling
-noremap <Leader>n :<C-u>call g:NerdTreeFindToggle()<cr>
