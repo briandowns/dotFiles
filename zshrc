@@ -52,7 +52,7 @@ ENABLE_CORRECTION="true"
 plugins=(git go)
 
 source $ZSH/oh-my-zsh.sh
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/Users/bdowns/gocode/bin:/usr/local/go/bin:/opt/local/lib/postgresql93/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/Users/bdowns/gocode/bin:/usr/local/go/bin:/opt/local/lib/postgresql93/bin:~/bin
 
 # export MANPATH="/usr/local/man:$MANPATH"
 # You may need to manually set your language environment
@@ -124,7 +124,3 @@ function year_ago() { echo $(expr $(date +%s) - 31557600) }
 
 PERL_MB_OPT="--install_base \"/Users/bdowns/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/bdowns/perl5"; export PERL_MM_OPT;
-
-export DOCKER_HOST=tcp://192.168.59.103:2376
-export DOCKER_CERT_PATH=/Users/bdowns/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
