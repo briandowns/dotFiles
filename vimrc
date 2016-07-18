@@ -2,7 +2,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=/Users/bdowns/.vim/bundle/Vundle.vim
 set runtimepath+=$GOPATH/src/github.com/golang/lint/misc/vim " Golang linting
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
@@ -110,11 +110,15 @@ au FileType go nmap <Leader>v <Plug>(go-def-vertical)
 au FileType go nmap <Leader>in <Plug>(go-info)
 au FileType go nmap <Leader>ii <Plug>(go-implements)
 
-au FileType go nmap <leader>r  <Plug>(go-run)
-au FileType go nmap <leader>b  <Plug>(go-build)
-au FileType go nmap <leader>g  <Plug>(go-gbbuild)
-au FileType go nmap <leader>t  <Plug>(go-test-compile)
-au FileType go nmap <Leader>d  <Plug>(go-doc)
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>g <Plug>(go-gbbuild)
+au FileType go nmap <leader>t <Plug>(go-test-compile)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <Leader>s <Plug>(go-info)
 au FileType go nmap <Leader>f  :GoImports<CR>
 
 set wildignore+=.hg,.git,.svn                    " Version control
@@ -204,6 +208,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:go_list_type = "quickfix"
 
 " ==================== YouCompleteMe ====================
 let g:ycm_autoclose_preview_window_after_completion = 1
