@@ -2,25 +2,31 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=/Users/bdowns/.vim/bundle/Vundle.vim
+set rtp+=/home/bdowns/.vim/bundle/Vundle.vim
 set runtimepath+=$GOPATH/src/github.com/golang/lint/misc/vim " Golang linting
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'tpope/vim-markdown'
 Plugin 'fatih/vim-go'
+Plugin 'buoto/gotests-vim'
 Plugin 'nsf/gocode'
 Plugin 'vim-jp/vim-go-extra'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'jamessan/vim-gnupg'
+Plugin 'tpope/vim-commentary'
+Plugin 'vim-scripts/Conque-GDB'
+Plugin 'rust-lang/rust.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -38,10 +44,13 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 set omnifunc=syntaxcomplete#Complete
+set completeopt=longest,menuone
 
 filetype plugin indent on
 
 colorscheme molokai
+
+set mouse=a
 
 " 16 color terminal
 set t_Co=256
@@ -59,6 +68,15 @@ set ruler
 
 " Leave 3 line buffer
 set scrolloff=3
+set ttyscroll=3                 " Speedup scrolling
+set laststatus=2                " Show status line always
+set encoding=utf-8              " Set default encoding to UTF-8
+set incsearch                   " Shows the match while typing
+set hlsearch                    " Highlight found searches
+set noerrorbells                " No beeps
+set splitright                  " Vertical windows should be split to right
+set splitbelow                  " Horizontal windows should split to bottom
+
 
 " Enable syntax stuff
 syntax on
@@ -76,11 +94,25 @@ set lazyredraw
 " speed up syntax highlighting
 set nocursorcolumn
 set nocursorline
+set re=1
 syntax sync minlines=256
 set synmaxcol=128
 
+" Enable to copy to clipboard for operations like yank, delete, change and put
+" http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
+if has('unnamedplus')
+  set clipboard^=unnamed
+  set clipboard^=unnamedplus
+endif
+
 " Setup a leader
 let mapleader = ";"
+
+let NERDTreeShowHidden=1
+
+autocmd BufEnter * lcd %:p:h
+autocmd StdinReadPre * let g:isReadingFromStdin = 1
+autocmd VimEnter * if !argc() && !exists('g:isReadingFromStdin') | NERDTree | endif
 
 " Go settings
 au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
@@ -90,25 +122,35 @@ let g:go_fmt_fail_silently = 0
 let g:go_fmt_autosave = 1
 let g:go_fmt_command = "goimports"
 let g:go_autodetect_gopath = 1
+
 let g:go_highlight_space_tab_error = 0
 let g:go_highlight_array_whitespace_error = 0
 let g:go_highlight_trailing_whitespace_error = 0
 let g:go_highlight_extra_types = 0
 let g:go_highlight_operators = 0
-
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
+let g:go_highlight_build_constraints = 0
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+
+let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_metalineter_enabled =         ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave =         1
+let g:go_metalinter_deadline =         "5s"
+let g:go_auto_type_info =              1
 
 " au FileType go nmap <Leader>s <Plug>(go-def-split)
 au FileType go nmap <Leader>s  <Plug>(go-implements)
 au FileType go nmap <Leader>v <Plug>(go-def-vertical)
 au FileType go nmap <Leader>in <Plug>(go-info)
 au FileType go nmap <Leader>ii <Plug>(go-implements)
-
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>g <Plug>(go-gbbuild)
@@ -119,6 +161,7 @@ au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 au FileType go nmap <Leader>s <Plug>(go-info)
 au FileType go nmap <Leader>f  :GoImports<CR>
+au FileType go nmap <F9> :GoCoverageToggle -short<cr>
 
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
@@ -208,9 +251,13 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:go_list_type = "quickfix"
+
+" ==================== GDB ==============================
+let g:ConqueTerm_Color = 2         " 1: strip color after 200 lines, 2: always with color
+let g:ConqueTerm_CloseOnEnd = 1    " close conque when program ends running
+let g:ConqueTerm_StartMessages = 0 " display warning messages if conqueTerm is configured incorrectly
 
 " ==================== YouCompleteMe ====================
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -226,3 +273,15 @@ function! g:NerdTreeFindToggle()
     exec 'NERDTree'
   endif
 endfunction
+
+" Armor files
+let g:GPGPreferArmor=1
+" Set the default option
+"let g:GPGDefaultRecipients=["la@la.com"]
+
+augroup GPG
+    autocmd!
+    autocmd FileType gpg setlocal updatetime=12000
+    autocmd CursorHold *.\(gpg\|asc\|pgp\) quit
+augroup END
+

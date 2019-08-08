@@ -52,7 +52,7 @@ ENABLE_CORRECTION="true"
 plugins=(git go)
 
 source $ZSH/oh-my-zsh.sh
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/Users/bdowns/gocode/bin:/usr/local/go/bin:/opt/local/lib/postgresql93/bin:~/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/home/bdowns/go/bin:/usr/local/go/bin:$HOME/.cargo/bin
 
 # export MANPATH="/usr/local/man:$MANPATH"
 # You may need to manually set your language environment
@@ -68,7 +68,7 @@ export ARCHFLAGS="-arch x86_64"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 export GOROOT=/usr/local/go
-export GOPATH=/Users/bdowns/gocode
+export GOPATH=/home/bdowns/go
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:/usr/local/go_appengine
 
 # General
@@ -122,5 +122,19 @@ function week_ago() { echo $(expr $(date +%s) - 604800) }
 function month_ago() { echo $(expr $(date +%s) - 2592000) }
 function year_ago() { echo $(expr $(date +%s) - 31557600) }
 
-PERL_MB_OPT="--install_base \"/Users/bdowns/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/bdowns/perl5"; export PERL_MM_OPT;
+PERL_MB_OPT="--install_base \"/home/bdowns/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/bdowns/perl5"; export PERL_MM_OPT;
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/bdowns/tmp/google-cloud-sdk/path.zsh.inc' ]; then . '/home/bdowns/tmp/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/bdowns/tmp/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/bdowns/tmp/google-cloud-sdk/completion.zsh.inc'; fi
+
+export MOZ_USE_XINPUT2=1
+
+autoload -Uz compinit
+compinit
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin
+
