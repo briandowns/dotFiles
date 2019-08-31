@@ -49,10 +49,15 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git go)
+plugins=(git go osx iterm2)
+
+#Disable autocorrect
+unsetopt correct_all
+unsetopt correct
+DISABLE_CORRECTION="true"
 
 source $ZSH/oh-my-zsh.sh
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/home/bdowns/go/bin:/usr/local/go/bin:$HOME/.cargo/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/bdowns/go/bin:/usr/local/go/bin:$HOME/.cargo/bin
 
 # export MANPATH="/usr/local/man:$MANPATH"
 # You may need to manually set your language environment
@@ -68,8 +73,8 @@ export ARCHFLAGS="-arch x86_64"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 export GOROOT=/usr/local/go
-export GOPATH=/home/bdowns/go
-export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:/usr/local/go_appengine
+export GOPATH=/Users/bdowns/go
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
 # General
 alias lt='ls -ltra'
@@ -132,9 +137,4 @@ if [ -f '/home/bdowns/tmp/google-cloud-sdk/path.zsh.inc' ]; then . '/home/bdowns
 if [ -f '/home/bdowns/tmp/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/bdowns/tmp/google-cloud-sdk/completion.zsh.inc'; fi
 
 export MOZ_USE_XINPUT2=1
-
-autoload -Uz compinit
-compinit
-# Completion for kitty
-kitty + complete setup zsh | source /dev/stdin
 
