@@ -7,6 +7,7 @@ PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(g
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
+#
 #ZSH_THEME="amuse"
 #ZSH_THEME="flazz"
 #ZSH_THEME=“agnoster”
@@ -88,6 +89,9 @@ alias gs='git status'
 
 alias vag='vagrant'
 
+#alias pbcopy='xsel --clipboard --input'
+#alias pbpaste='xsel --clipboard --output'
+
 ## Find files
 function ff() { find . -type f -iname '*'$*'*' -ls ; }
 
@@ -129,12 +133,6 @@ function year_ago() { echo $(expr $(date +%s) - 31557600) }
 
 PERL_MB_OPT="--install_base \"/home/bdowns/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/bdowns/perl5"; export PERL_MM_OPT;
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/bdowns/tmp/google-cloud-sdk/path.zsh.inc' ]; then . '/home/bdowns/tmp/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/bdowns/tmp/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/bdowns/tmp/google-cloud-sdk/completion.zsh.inc'; fi
 
 export MOZ_USE_XINPUT2=1
 
